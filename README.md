@@ -55,7 +55,7 @@ Para uma comparação justa entre os paradigmas, as métricas de sucesso foram d
 
 * **Testes Estatísticos (ANOVA, Kruskal-Wallis):** A métrica de performance é o **Poder Estatístico**, definido como a proporção de simulações em que a hipótese nula foi corretamente rejeitada ($p < 0.05$) quando um efeito real existia.
   
-    $$ \text{Poder} = P(\text{rejeitar } H_0 | H_1 \text{ é verdadeira}) $$
+    $$\text{Poder} = P(\text{rejeitar } H_0 | H_1 \text{ é verdadeira})$$
   
 * **Modelos de Machine Learning (RF, XGBoost):** A métrica é a **Acurácia Balanceada Média**. Ela avalia a capacidade do modelo de classificar corretamente as amostras em seus respectivos grupos de origem e é robusta a desbalanceamentos de classe.
 
