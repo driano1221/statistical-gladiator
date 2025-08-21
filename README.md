@@ -1,4 +1,4 @@
-# Statistical Gladiator: Uma Análise Comparativa da Robustez de Métodos Estatísticos e de Machine Learning
+# Uma Análise Comparativa da Robustez de Métodos Estatísticos e de Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
 ![Libraries](https://img.shields.io/badge/Bibliotecas-Pandas%20%7C%20Scikit--Learn%20%7C%20XGBoost-orange.svg)
@@ -29,7 +29,7 @@ $$Y_{ij} = \mu_i + \epsilon_{ij}, \quad \text{onde} \quad \epsilon_{ij} \sim N(0
 
 Um efeito real ($\delta$) foi introduzido para simular a condição de $H_1$ verdadeira, tal que $\mu_i = (i-1)\delta$. O estudo foi conduzido com um total de 1.000 simulações para cada combinação de método e condição.
 
-### 2.2. Fatores do Estudo
+### Fatores do Estudo
 
 A simulação foi estruturada em torno de dois fatores principais: os métodos de análise ("Gladiadores") e as condições dos dados ("Arenas").
 
@@ -44,12 +44,12 @@ A simulação foi estruturada em torno de dois fatores principais: os métodos d
 | | Alta Assimetria | Dados gerados a partir de uma distribuição Gama, com forte assimetria à direita. |
 | | Amostras Pequenas | Tamanho amostral reduzido para $n=10$ por grupo. |
 
-### 2.3. Modelagem das Condições Adversas
+### Modelagem das Condições Adversas
 
 * **Outliers:** A contaminação foi modelada pela substituição de uma proporção `p=0.10` das amostras de cada grupo por novas amostras oriundas de uma distribuição com variância ampliada: $N(\mu_i, \sigma^2 \times k)$, onde $k=5$ é o fator de intensidade.
 * **Assimetria:** Dados assimétricos foram gerados a partir da distribuição Gama, $\Gamma(\alpha, \beta)$, e subsequentemente padronizados (Z-score) para manter a média e variância controladas antes da adição do efeito.
 
-## 3. Métricas de Avaliação
+##  Métricas de Avaliação
 
 Para uma comparação justa entre os paradigmas, as métricas de sucesso foram definidas da seguinte forma:
 
@@ -59,11 +59,11 @@ Para uma comparação justa entre os paradigmas, as métricas de sucesso foram d
   
 * **Modelos de Machine Learning (RF, XGBoost):** A métrica é a **Acurácia Balanceada Média**. Ela avalia a capacidade do modelo de classificar corretamente as amostras em seus respectivos grupos de origem e é robusta a desbalanceamentos de classe.
 
-## 4. Resultados
+##  Resultados
 
 A análise das 16.000 batalhas simuladas produziu um conjunto de resultados claros e consistentes.
 
-### 4.1. Panorama Geral da Performance
+###  Panorama Geral da Performance
 
 O mapa de calor abaixo resume a performance média de cada gladiador em cada arena. Valores mais altos (amarelo) indicam melhor desempenho.
 
@@ -72,7 +72,7 @@ O mapa de calor abaixo resume a performance média de cada gladiador em cada are
 
 A visualização geral já indica a alta performance de Kruskal-Wallis e RandomForest em todos os cenários, em contraste com a vulnerabilidade específica da ANOVA.
 
-### 4.2. Análise de Robustez a Outliers
+### Análise de Robustez a Outliers
 
 A condição com outliers revelou a diferença mais dramática de robustez. A análise de sensibilidade abaixo demonstra como o poder estatístico da ANOVA e do Kruskal-Wallis decai à medida que a porcentagem de outliers nos dados aumenta.
 
@@ -81,7 +81,7 @@ A condição com outliers revelou a diferença mais dramática de robustez. A an
 
 Observa-se que o poder da ANOVA sofre uma degradação catastrófica a partir de 10% de contaminação, enquanto o Kruskal-Wallis mantém uma performance quase perfeita mesmo em níveis de contaminação elevados.
 
-### 4.3. Análise de Desempenho com Amostras Pequenas
+###  Análise de Desempenho com Amostras Pequenas
 
 A arena com amostras de tamanho reduzido ($n=10$) testou a consistência dos métodos. O gráfico de boxplot ilustra a distribuição da performance de cada gladiador ao longo das 1.000 simulações.
 
@@ -89,7 +89,7 @@ A arena com amostras de tamanho reduzido ($n=10$) testou a consistência dos mé
 
 Enquanto ANOVA, Kruskal-Wallis e RandomForest apresentaram performance máxima e com variância nula, o XGBoost demonstrou não apenas uma média de acurácia inferior, mas também uma variabilidade de resultados significativamente maior, indicando menor confiabilidade neste cenário.
 
-## 5. Discussão e Conclusões
+## Discussão e Conclusões
 
 Os resultados agregados permitem a formulação de um ranking geral de robustez, calculado pela média de performance de cada método em todas as quatro arenas.
 
@@ -105,7 +105,7 @@ As conclusões deste estudo são:
 
 Em suma, a escolha da ferramenta analítica correta depende criticamente das características dos dados. Este estudo fornece um guia empírico para auxiliar nessa decisão, demonstrando que tanto os métodos estatísticos robustos quanto os algoritmos de ensemble de Machine Learning representam escolhas excelentes para a análise de dados imperfeitos.
 
-## 6. Como Reproduzir o Estudo
+## Como Reproduzir o Estudo
 
 Para replicar os resultados desta análise, siga os passos abaixo:
 
