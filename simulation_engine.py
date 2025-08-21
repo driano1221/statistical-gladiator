@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import zscore
 
+
 def generate_battle_data(n_groups, n_per_group, effect_size=0, contamination_level=0, outlier_intensity=5, skewness_level=0, random_state=None):
     """
     Gera um DataFrame para uma única batalha, agora com opção de assimetria.
@@ -43,8 +44,10 @@ def generate_battle_data(n_groups, n_per_group, effect_size=0, contamination_lev
         # Injeta outliers (mesma lógica de antes)
         n_outliers = int(n_per_group * contamination_level)
         if n_outliers > 0:
-            outlier_indices = np.random.choice(n_per_group, n_outliers, replace=False)
-            outliers = np.random.normal(loc=mean_offset, scale=outlier_intensity, size=n_outliers)
+            outlier_indices = np.random.choice(
+                n_per_group, n_outliers, replace=False)
+            outliers = np.random.normal(
+                loc=mean_offset, scale=outlier_intensity, size=n_outliers)
             group_data[outlier_indices] = outliers
 
         data.extend(group_data)

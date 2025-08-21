@@ -41,12 +41,12 @@ BATTLE_CONDITIONS = {
     },
     'high_skewness': {
         'contamination_level': 0.0,
-        'skewness_level': 4.0, # Nível de assimetria (0 é normal)
+        'skewness_level': 4.0,  # Nível de assimetria (0 é normal)
         'n_per_group': 30
     },
     'small_samples': {
         'contamination_level': 0.0,
         'skewness_level': 0.0,
-        'n_per_group': 10 # Amostras bem pequenas
+        'n_per_group': 10  # Amostras bem pequenas
     }
 }
