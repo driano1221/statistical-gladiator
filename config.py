@@ -1,23 +1,52 @@
-# config.py
+# config.py (Versão 2.0 - Fase 2)
 
 """
-Painel de Controle do Projeto "Statistical Gladiator"
+Painel de Controle do Projeto "Statistical Gladiator" - Fase 2
 
-Aqui centralizamos todas as variáveis e parâmetros para
-facilitar a experimentação e a manutenção do código.
+Expandimos os parâmetros para incluir múltiplos gladiadores e
+condições de batalha.
 """
 
 # Parâmetros da Simulação Global
-N_SIMULATIONS = 1000  # Número de vezes que cada cenário será simulado
-RANDOM_STATE = 42      # Semente para garantir a reprodutibilidade dos resultados
+N_SIMULATIONS = 1000
+RANDOM_STATE = 42
 
-# Parâmetros para Geração de Dados (MVP)
+# Parâmetros para Geração de Dados
 N_GROUPS = 3
-N_PER_GROUP = 30
-# Tamanho do efeito quando a H0 é falsa. 0 para H0 verdadeira.
+N_PER_GROUP_DEFAULT = 30
 EFFECT_SIZE = 0.8
 
-# Parâmetros da "Condição de Batalha": Outliers
-CONTAMINATION_LEVEL = 0.10  # 10% dos dados serão outliers
-# Quão extremos os outliers são (x vezes o desvio padrão)
-OUTLIER_INTENSITY = 5
+# --- LISTA DE GLADIADORES ---
+# Aqui definimos os competidores que entrarão na arena
+GLADIATORS = {
+    'ANOVA': {'type': 'statistical'},
+    'Kruskal-Wallis': {'type': 'statistical'},
+    'RandomForest': {'type': 'ml'},
+    'XGBoost': {'type': 'ml'},
+}
+
+# --- CONDIÇÕES DE BATALHA ---
+# Cada condição é um dicionário de parâmetros que sobrepõe os padrões
+BATTLE_CONDITIONS = {
+    'baseline_normal': {
+        'contamination_level': 0.0,
+        'skewness_level': 0.0,
+        'n_per_group': 30
+    },
+    'outliers_10_percent': {
+        'contamination_level': 0.10,
+        'outlier_intensity': 5,
+        'skewness_level': 0.0,
+        'n_per_group': 30
+    },
+    'high_skewness': {
+        'contamination_level': 0.0,
+        'skewness_level': 4.0, # Nível de assimetria (0 é normal)
+        'n_per_group': 30
+    },
+    'small_samples': {
+        'contamination_level': 0.0,
+        'skewness_level': 0.0,
+        'n_per_group': 10 # Amostras bem pequenas
+    }
+}
