@@ -16,8 +16,7 @@ N_GROUPS = 3
 N_PER_GROUP = 30
 # Tamanho do efeito quando a H0 é falsa. 0 para H0 verdadeira.
 EFFECT_SIZE = 0.8
-git add .
-git commit -m "Fase 1: Implementado config e motor de geração de dados"
+
 # Parâmetros da "Condição de Batalha": Outliers
 CONTAMINATION_LEVEL = 0.10  # 10% dos dados serão outliers
 # Quão extremos os outliers são (x vezes o desvio padrão)
