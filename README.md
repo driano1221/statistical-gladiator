@@ -4,7 +4,7 @@
 ![Libraries](https://img.shields.io/badge/Bibliotecas-Pandas%20%7C%20Scikit--Learn%20%7C%20XGBoost-orange.svg)
 ![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-green.svg)
 
-## 1. Introdução
+## Introdução
 
 A prática contemporânea da ciência de dados situa-se na intersecção entre a inferência estatística clássica e os algoritmos de aprendizado de máquina (Machine Learning). Uma questão fundamental, contudo, permanece subexplorada: qual a robustez relativa desses dois paradigmas diante de dados não ideais, frequentemente encontrados em cenários reais?
 
@@ -12,11 +12,11 @@ Este projeto conduz uma investigação sistemática para quantificar e comparar 
 
 O objetivo central é gerar um mapa de desempenho empírico que sirva como um guia prático para pesquisadores e analistas na seleção da ferramenta mais apropriada para o seu contexto de dados específico.
 
-## 2. Metodologia
+## Metodologia
 
 O estudo emprega uma simulação de Monte Carlo para gerar e analisar um vasto número de conjuntos de dados sintéticos, permitindo um controle rigoroso sobre as condições experimentais.
 
-### 2.1. Delineamento Experimental
+###  Delineamento Experimental
 
 O problema fundamental consiste em testar a diferença entre as médias de $k=3$ grupos. A hipótese nula ($H_0$) e a hipótese alternativa ($H_1$) são definidas como:
 
@@ -54,7 +54,9 @@ A simulação foi estruturada em torno de dois fatores principais: os métodos d
 Para uma comparação justa entre os paradigmas, as métricas de sucesso foram definidas da seguinte forma:
 
 * **Testes Estatísticos (ANOVA, Kruskal-Wallis):** A métrica de performance é o **Poder Estatístico**, definido como a proporção de simulações em que a hipótese nula foi corretamente rejeitada ($p < 0.05$) quando um efeito real existia.
+  
     $$ \text{Poder} = P(\text{rejeitar } H_0 | H_1 \text{ é verdadeira}) $$
+  
 * **Modelos de Machine Learning (RF, XGBoost):** A métrica é a **Acurácia Balanceada Média**. Ela avalia a capacidade do modelo de classificar corretamente as amostras em seus respectivos grupos de origem e é robusta a desbalanceamentos de classe.
 
 ## 4. Resultados
@@ -65,7 +67,8 @@ A análise das 16.000 batalhas simuladas produziu um conjunto de resultados clar
 
 O mapa de calor abaixo resume a performance média de cada gladiador em cada arena. Valores mais altos (amarelo) indicam melhor desempenho.
 
-[INSERIR O HEATMAP AQUI]
+<img width="1313" height="865" alt="heat" src="https://github.com/user-attachments/assets/de5e47f8-612e-4904-b388-5d3e78fba05c" />
+
 
 A visualização geral já indica a alta performance de Kruskal-Wallis e RandomForest em todos os cenários, em contraste com a vulnerabilidade específica da ANOVA.
 
@@ -73,7 +76,8 @@ A visualização geral já indica a alta performance de Kruskal-Wallis e RandomF
 
 A condição com outliers revelou a diferença mais dramática de robustez. A análise de sensibilidade abaixo demonstra como o poder estatístico da ANOVA e do Kruskal-Wallis decai à medida que a porcentagem de outliers nos dados aumenta.
 
-[INSERIR O GRÁFICO DE LINHAS (ANÁLISE DE SENSIBILIDADE) AQUI]
+<img width="1366" height="865" alt="linhas" src="https://github.com/user-attachments/assets/639e5361-b662-41ab-b3e9-8e624c58e35d" />
+
 
 Observa-se que o poder da ANOVA sofre uma degradação catastrófica a partir de 10% de contaminação, enquanto o Kruskal-Wallis mantém uma performance quase perfeita mesmo em níveis de contaminação elevados.
 
@@ -81,7 +85,7 @@ Observa-se que o poder da ANOVA sofre uma degradação catastrófica a partir de
 
 A arena com amostras de tamanho reduzido ($n=10$) testou a consistência dos métodos. O gráfico de boxplot ilustra a distribuição da performance de cada gladiador ao longo das 1.000 simulações.
 
-[INSERIR O GRÁFICO DE BOXPLOT (SMALL SAMPLES) AQUI]
+<img width="1366" height="865" alt="boxplot" src="https://github.com/user-attachments/assets/e8d20a28-60a1-4e7d-bcac-341770b6c728" />
 
 Enquanto ANOVA, Kruskal-Wallis e RandomForest apresentaram performance máxima e com variância nula, o XGBoost demonstrou não apenas uma média de acurácia inferior, mas também uma variabilidade de resultados significativamente maior, indicando menor confiabilidade neste cenário.
 
@@ -89,7 +93,7 @@ Enquanto ANOVA, Kruskal-Wallis e RandomForest apresentaram performance máxima e
 
 Os resultados agregados permitem a formulação de um ranking geral de robustez, calculado pela média de performance de cada método em todas as quatro arenas.
 
-[INSERIR O GRÁFICO DE BARRAS (RANKING FINAL) AQUI]
+<img width="1165" height="666" alt="pontuação" src="https://github.com/user-attachments/assets/34bf36c8-cefd-4a13-b7a7-bfb29ab3d4b6" />
 
 As conclusões deste estudo são:
 
